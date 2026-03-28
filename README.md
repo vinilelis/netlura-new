@@ -1,4 +1,7 @@
 # Netflix Clone - Tema Dark/Light Mode
+(Imersão front end com IA - ALURA)
+<img width="1863" height="949" alt="image" src="https://github.com/user-attachments/assets/518059ad-66c7-4f84-8088-773f94709b57" />
+
 
 Este projeto é um clone da página de seleção de perfis da Netflix com funcionalidade completa de alternância entre temas dark e light.
 
