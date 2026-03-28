@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="loading">
+        <video id="loading-video" autoplay muted>
+            <source src="/assets/netflix.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+    <main style="display: none;">
+        <div class="theme-toggle">
+            <button id="theme-toggle-btn" aria-label="Alternar tema">
+                <span class="theme-icon">☀️</span>
+                <span class="theme-text">Modo Claro</span>
+            </button>
+        </div>
+        <h1>Quem está assistindo?</h1>
+        <section class="profiles">
+            <ul>
+                <li class="profile">
+                    <a href="/catalogo2/catalogo2.html" onclick="selectProfile('Lucas', '/assets/perfil-1.png')">
+                        <figure>
+                            <img src="/assets/perfil-1.png" alt="imagem do perfil 1">
+                            <figcaption>Lucas</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="profile">
+                    <a href="catalogo3/catalogo3.html" onclick="selectProfile('Thiago', '/assets/perfil-2.png')">
+                        <figure>
+                            <img src="/assets/perfil-2.png" alt="imagem do perfil 2">
+                            <figcaption>Thiago</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="profile">
+                    <a href="/catalogo1/catalogo.html" onclick="selectProfile('Vinicius', '/assets/perfil-3.png')">
+                        <figure>
+                            <img src="/assets/perfil-3.png" alt="imagem do perfil 3">
+                            <figcaption>Vinicius</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="profile">
+                    <a href="catalogo/catalogo.html" onclick="selectProfile('Sophia', '/assets/perfil-4.png')">
+                        <figure>
+                            <img src="/assets/perfil-4.png" alt="imagem do perfil 4">
+                            <figcaption>Sophia</figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+    
+    <script src="/js/index.js"></script>
+</body>
+</html>

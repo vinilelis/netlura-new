@@ -1,0 +1,592 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* CSS Custom Properties para temas */
+:root {
+    /* Tema Dark (padrão) */
+    --bg-primary: radial-gradient(circle at 20% 20%, #2a2a2a 0%, #0c0c0c 35%, #000 100%);
+    --bg-secondary: #ffffff;
+    --text-primary: #ffffff;
+    --text-secondary: #333333;
+    --accent-color: #e50914;
+    --accent-shadow: rgba(229, 9, 20, 0.5);
+    --border-color: rgba(255, 255, 255, 0.3);
+    --border-hover: #ffffff;
+    --button-bg: rgba(255, 255, 255, 0.1);
+    --button-text: #ffffff;
+    --button-hover: rgba(255, 255, 255, 0.2);
+}
+
+/* Tema Light */
+[data-theme="light"] {
+    --bg-primary: linear-gradient(135deg, #E0F6FF 0%, #FFF8DC 25%, #FFFACD 50%, #F0FFF0 75%, #F5F5F5 100%);
+    --bg-secondary: #ffffff;
+    --text-primary: #2F4F4F;
+    --text-secondary: #708090;
+    --accent-color: #FF8C00;
+    --accent-shadow: rgba(255, 140, 0, 0.4);
+    --border-color: rgba(255, 218, 185, 0.6);
+    --border-hover: #FFE4B5;
+    --button-bg: rgba(224, 246, 255, 0.3);
+    --button-text: #2F4F4F;
+    --button-hover: rgba(255, 248, 220, 0.4);
+}
+
+/* Reset universal - inclui padding e border na largura total dos elementos */
+* {
+    box-sizing: border-box;
+}
+
+/* Estilos do corpo da página */
+body {
+    /* Remove margens padrão */
+    margin: 0;
+    /* Fundo com gradiente radial escuro inspirado na Netflix */
+    background: var(--bg-primary);
+    /* Cor do texto padrão */
+    color: var(--text-primary);
+    /* Altura mínima de 100% da viewport */
+    min-height: 100vh;
+}
+
+/* Container principal da página */
+main {
+    /* Usa flexbox para layout */
+    display: flex;
+    /* Organiza elementos em coluna */
+    flex-direction: column;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    justify-content: center;
+    /* Espaçamento interno */
+    padding: 0 1.5rem;
+    /* Alinhamento do texto ao centro */
+    text-align: center;
+    /* Altura de 100% da viewport */
+    height: 100vh;
+    gap: 1.5rem;
+}
+
+/* Título principal */
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Tamanho responsivo da fonte */
+    font-size: clamp(2rem, 5vw, 3rem);
+    /* Espaçamento entre letras */
+    letter-spacing: 0.06em;
+    /* Margem/paddings centralizados */
+    margin: 0.2rem 0 1.5rem;
+    padding-top: 0;
+    /* Cor vermelha da Netflix */
+    color: var(--accent-color);
+    /* Sombra de texto com brilho */
+    text-shadow: 0 2px 12px var(--accent-shadow);
+    /* Peso da fonte (negrito) */
+    font-weight: 700;
+    /* Largura máxima para não passar da tela */
+    max-width: 100%;
+    /* Centraliza o texto */
+    text-align: center;
+    /* Quebra de linha se necessário */
+    word-wrap: break-word;
+    /* Padding lateral para mobile */
+    padding: 0 1rem;
+    /* Centraliza horizontalmente */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Container da seção de perfis */
+.profiles {
+    /* Largura máxima para centralizar */
+    max-width: 900px;
+    /* Centraliza o container */
+    margin: 0 auto;
+    /* Padding para não encostar nas bordas */
+    padding: 0 1rem;
+    /* Largura total */
+    width: 100%;
+}
+
+/* Lista de perfis */
+.profiles ul {
+    /* Layout em grid */
+    display: grid;
+    /* Espaçamento entre itens */
+    gap: 1.5rem;
+    /* Remove margens padrão */
+    margin: 0;
+    /* Remove padding padrão */
+    padding: 0;
+    /* Remove marcadores da lista */
+    list-style: none;
+    /* 4 colunas fixas para melhor centralização */
+    grid-template-columns: repeat(4, 1fr);
+    /* Centraliza o grid */
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    /* Largura máxima do grid */
+    max-width: 800px;
+    /* Centraliza o grid */
+    margin: 0 auto;
+}
+
+/* Cada perfil individual */
+.profile {
+    /* Layout flexível */
+    display: flex;
+    /* Organiza em coluna */
+    flex-direction: column;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Espaçamento entre imagem e texto */
+    gap: 1rem;
+    /* Espaçamento interno */
+    padding: 1rem;
+    /* Bordas arredondadas */
+    border-radius: 1rem;
+    /* Transição suave para efeitos */
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    /* Cursor de ponteiro */
+    cursor: pointer;
+    /* Borda transparente (para efeito hover) */
+    border: 3px solid transparent;
+}
+
+/* Imagens dos perfis */
+.profile img {
+    /* Largura da imagem */
+    width: 180px;
+    /* Altura da imagem */
+    height: 180px;
+    /* Bordas arredondadas */
+    border-radius: 0.75rem;
+    /* Ajusta imagem ao container */
+    object-fit: cover;
+    /* Borda branca translúcida */
+    border: 3px solid var(--border-color);
+    /* Transição suave */
+    transition: all 0.3s ease;
+}
+
+/* Legendas das imagens (nomes dos perfis) */
+ figcaption {
+    /* Remove margem padrão */
+    margin: 0;
+    /* Força aplicação da fonte */
+    font-family:"Open Sans", sans-serif;
+    /* Peso da fonte */
+    font-weight: 600;
+    /* Tamanho da fonte */
+    font-size: 1rem;
+    /* Cor do texto */
+    color: var(--text-primary);
+    /* Transição de cor */
+    transition: color 0.3s ease;
+    /* Espaçamento entre letras */
+    letter-spacing: 0.02em;
+}
+
+/* Efeitos ao passar o mouse */
+.profile:hover {
+    /* Eleva o elemento */
+    transform: translateY(-8px) scale(1.05);
+}
+
+.profile:hover img {
+    /* Muda cor da borda */
+    border-color: var(--border-hover);
+    /* Adiciona sombra luminosa */
+    box-shadow: 0 0 20px var(--accent-shadow);
+}
+
+
+
+/* Efeitos ao focar (acessibilidade) */
+.profile:focus-visible {
+    /* Remove outline padrão */
+    outline: none;
+    /* Borda vermelha */
+    border-color: var(--accent-color);
+    /* Bordas arredondadas */
+    border-radius: 1rem;
+}
+
+/* ==================== TEMA TOGGLE ==================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+#theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid var(--border-color);
+    border-radius: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#theme-toggle-btn:hover {
+    background: var(--button-hover);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--accent-shadow);
+}
+
+.theme-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+#theme-toggle-btn:hover .theme-icon {
+    transform: scale(1.1);
+}
+
+.theme-text {
+    transition: color 0.3s ease;
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+/* MOBILE - Dispositivos pequenos (até 480px) */
+@media screen and (max-width: 480px) {
+    main {
+        /* Reduz padding em telas pequenas */
+        padding: 2rem 0.5rem;
+        /* Espacamento vertical reduzido */
+        gap: 1.5rem;
+    }
+
+    h1 {
+        /* Título menor em mobile */
+        font-size: 1.5rem;
+        /* Menos espaço abaixo do título */
+        margin: 0 0 1.5rem;
+        /* Centralizado com as imagens */
+        width: 100%;
+        /* Padding reduzido */
+        padding: 0 0.5rem;
+    }
+
+    .profiles {
+        /* Centraliza o container */
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .profiles ul {
+        /* 2 colunas centralizadas em mobile */
+        grid-template-columns: 1fr 1fr;
+        /* Reduz gap em mobile */
+        gap: 1rem;
+        /* Limita largura para centralizar */
+        max-width: 280px;
+        width: 100%;
+        /* Centraliza */
+        margin: 0 auto;
+    }
+
+    .profile {
+        /* Menos padding em mobile */
+        padding: 0.5rem;
+        /* Reduz border-radius */
+        border-radius: 0.5rem;
+        /* Menos gap entre imagem e texto */
+        gap: 0.5rem;
+    }
+
+    .profile img {
+        /* Imagens menores em mobile */
+        width: 110px;
+        height: 110px;
+        /* Borda menor */
+        border-radius: 0.5rem;
+        border-width: 2px;
+    }
+
+    figcaption {
+        /* Texto menor em mobile */
+        font-size: 0.8rem;
+    }
+
+    .profile:hover {
+        /* Efeito hover menos agressivo em mobile */
+        transform: translateY(-4px) scale(1.02);
+    }
+
+    .profile:hover img {
+        /* Sombra menor */
+        box-shadow: 0 0 15px var(--accent-shadow);
+    }
+}
+
+/* Loading Video */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* TABLET - Dispositivos médios (481px a 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    main {
+        /* Padding moderado para tablet */
+        padding: 2.5rem 1.5rem;
+    }
+
+    h1 {
+        /* Título médio em tablet */
+        font-size: 2rem;
+        /* Espaço moderado */
+        margin: 0 0 2rem;
+        /* Centraliza */
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .profiles {
+        /* Centraliza completamente */
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .profiles ul {
+        /* 2 colunas igual aos outros tamanhos */
+        grid-template-columns: 1fr 1fr;
+        /* Gap moderado */
+        gap: 1.25rem;
+        /* Largura controlada para centralizar */
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .profile {
+        /* Padding moderado */
+        padding: 0.75rem;
+        gap: 0.75rem;
+    }
+
+    .profile img {
+        /* Imagens médias em tablet */
+        width: 140px;
+        height: 140px;
+        border: 2px solid var(--border-color);
+    }
+
+    figcaption {
+        /* Tamanho de fonte moderado */
+        font-size: 0.95rem;
+    }
+
+    .profile:hover {
+        /* Efeito hover moderado */
+        transform: translateY(-6px) scale(1.03);
+    }
+
+    .profile:hover img {
+        box-shadow: 0 0 18px var(--accent-shadow);
+    }
+}
+
+/* DESKTOP PEQUENO - (769px a 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    main {
+        padding: 3rem 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin: 0 0 2.5rem;
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .profiles {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .profiles ul {
+        /* 2 colunas para melhor centralização */
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        /* Largura controlada para centralizar */
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .profile img {
+        width: 160px;
+        height: 160px;
+    }
+
+    figcaption {
+        font-size: 1rem;
+    }
+}
+
+/* DESKTOP GRANDE - (1025px+) */
+@media screen and (min-width: 1025px) {
+    main {
+        /* Padding confortável em desktop */
+        padding: 3rem 1.5rem;
+    }
+
+    h1 {
+        /* Título grande em desktop */
+        font-size: 3rem;
+        margin: 0 0 2.5rem;
+        max-width: 100%;
+        padding: 0 1.5rem;
+    }
+
+    .profiles {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .profiles ul {
+        /* 4 colunas em full desktop */
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .profile {
+        padding: 1rem;
+    }
+
+    .profile img {
+        /* Imagens grandes em desktop */
+        width: 160px;
+        height: 160px;
+        border: 3px solid var(--border-color);
+    }
+
+    figcaption {
+        font-size: 1rem;
+    }
+
+    .profile:hover {
+        /* Efeito mais pronunciado em desktop */
+        transform: translateY(-8px) scale(1.05);
+    }
+
+    .profile:hover img {
+        box-shadow: 0 0 20px var(--accent-shadow);
+    }
+}
+
+/* MODO LANDSCAPE - Dispositivos em modo paisagem (altura < largura) */
+@media (orientation: landscape) and (max-height: 600px) {
+    main {
+        /* Menos padding vertical em landscape */
+        padding: 1rem 1.5rem;
+        min-height: auto;
+    }
+
+    h1 {
+        /* Título menor em landscape */
+        margin: 0 0 0.5rem;
+        font-size: 1.3rem;
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .profiles {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .profiles ul {
+        gap: 0.8rem;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .profile {
+        gap: 0.3rem;
+        padding: 0.3rem;
+    }
+
+    .profile img {
+        /* Imagens menores em landscape */
+        width: 90px;
+        height: 90px;
+    }
+
+    figcaption {
+        font-size: 0.75rem;
+    }
+}
+
+/* SUPORTE A TELAS GRANDES (1440px+) */
+@media screen and (min-width: 1440px) {
+    main {
+        padding: 4rem 2rem;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        margin: 0 0 3rem;
+        max-width: 100%;
+        padding: 0 2rem;
+    }
+
+    .profiles {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .profiles ul {
+        max-width: 1000px;
+        margin: 0 auto;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+    .profile {
+        padding: 1.25rem;
+    }
+
+    .profile img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
